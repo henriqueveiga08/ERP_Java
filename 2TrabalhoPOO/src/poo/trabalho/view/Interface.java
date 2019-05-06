@@ -46,8 +46,8 @@ public class Interface extends javax.swing.JFrame {
         infoClique = new javax.swing.JLabel();
         botaoCancelar = new javax.swing.JButton();
         introSejaBemVindo = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        imgUsuario32 = new javax.swing.JLabel();
+        imgSenha32 = new javax.swing.JLabel();
         introIdentifique = new javax.swing.JLabel();
         botaoEntrar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -85,9 +85,9 @@ public class Interface extends javax.swing.JFrame {
         introSejaBemVindo.setFont(new java.awt.Font("Palatino Linotype", 0, 24)); // NOI18N
         introSejaBemVindo.setText("Seja bem-vindo");
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/usuario32.png"))); // NOI18N
+        imgUsuario32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/usuario32.png"))); // NOI18N
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/senha32.png"))); // NOI18N
+        imgSenha32.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/senha32.png"))); // NOI18N
 
         introIdentifique.setFont(new java.awt.Font("Palatino Linotype", 0, 13)); // NOI18N
         introIdentifique.setText("Identidique-se para entrar a bordo de nosso sistema");
@@ -108,10 +108,10 @@ public class Interface extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
+                                .addComponent(imgUsuario32)
                                 .addGap(12, 12, 12))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel3)
+                                .addComponent(imgSenha32)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(infoProblemas)
@@ -139,14 +139,14 @@ public class Interface extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
-                        .addComponent(jLabel2))
+                        .addComponent(imgUsuario32))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(campoUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(campoSenha, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(imgSenha32))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(infoProblemas)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,7 +193,8 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_campoUsuarioActionPerformed
 
     private void botaoCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCancelarActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Voce clicou em cancelar");
+        dispose();
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void infoCliqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoCliqueMouseClicked
@@ -211,7 +212,7 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_infoCliqueMouseClicked
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
-        // TODO add your handling code here:
+        System.out.println("Voce clicou em entrar");
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     /**
@@ -254,13 +255,13 @@ public class Interface extends javax.swing.JFrame {
     private javax.swing.JButton botaoEntrar;
     private javax.swing.JTextField campoSenha;
     private javax.swing.JTextField campoUsuario;
+    private javax.swing.JLabel imgSenha32;
+    private javax.swing.JLabel imgUsuario32;
     private javax.swing.JLabel infoClique;
     private javax.swing.JLabel infoProblemas;
     private javax.swing.JLabel introIdentifique;
     private javax.swing.JLabel introSejaBemVindo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
