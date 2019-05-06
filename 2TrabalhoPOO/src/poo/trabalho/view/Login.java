@@ -1,26 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poo.trabalho.view;
 
 import java.awt.Desktop;
-import java.awt.FlowLayout;
-import java.awt.event.MouseListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JLabel;
 
-/**
- *
- * @author Henrique
- */
 public class Login extends javax.swing.JFrame {
 
     /**
@@ -192,19 +180,40 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoCancelarActionPerformed
 
     private void infoCliqueMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoCliqueMouseClicked
-              
+
         System.out.println("Voce clicou em infoClique");
-        
+
         try {
             Desktop.getDesktop().browse(new URI("http://www.google.com"));
         } catch (URISyntaxException | IOException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_infoCliqueMouseClicked
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
         System.out.println("Voce clicou em entrar");
+
+        String usuario = campoUsuario.getText();
+        String senha = campoSenha.getText();
+        System.out.println("Usuario = " + usuario + "\nSenha = " + senha);
+
+        try {
+            FileReader arq = new FileReader("..\\2TrabalhoPOO\\login.txt");
+            BufferedReader lerArq = new BufferedReader(arq);
+
+            String linha = lerArq.readLine(); 
+            System.out.println("usuario " + linha);
+            linha = lerArq.readLine(); 
+            System.out.println("senha " + linha);
+            
+            arq.close();
+        } catch (IOException e) {
+            System.err.printf("Erro na abertura do arquivo: %s.\n",
+                    e.getMessage());
+        }
+
+
     }//GEN-LAST:event_botaoEntrarActionPerformed
 
     public static void main(String args[]) {
