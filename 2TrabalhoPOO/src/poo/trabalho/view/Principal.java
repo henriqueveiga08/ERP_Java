@@ -35,6 +35,7 @@ public class Principal extends javax.swing.JFrame {
         botaoGeraRelatorio = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         imgSobre = new javax.swing.JLabel();
+        botaoSair = new javax.swing.JButton();
         imgFundoPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -119,13 +120,22 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Sobre", jPanel3);
 
+        botaoSair.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/onepieceX.png"))); // NOI18N
+        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoSairActionPerformed(evt);
+            }
+        });
+        jTabbedPane1.addTab("Sair", botaoSair);
+
         imgFundoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/fundoPrincipal.png"))); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
             .addComponent(imgFundoPrincipal)
         );
         layout.setVerticalGroup(
@@ -141,17 +151,21 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListarClientesActionPerformed
+    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+        dispose();
+    }//GEN-LAST:event_botaoSairActionPerformed
+
+    private void botaoGeraRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGeraRelatorioActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botaoListarClientesActionPerformed
+    }//GEN-LAST:event_botaoGeraRelatorioActionPerformed
 
     private void botaoCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarClienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoCadastrarClienteActionPerformed
 
-    private void botaoGeraRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGeraRelatorioActionPerformed
+    private void botaoListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListarClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_botaoGeraRelatorioActionPerformed
+    }//GEN-LAST:event_botaoListarClientesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,6 +206,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton botaoCadastrarCliente;
     private javax.swing.JButton botaoGeraRelatorio;
     private javax.swing.JButton botaoListarClientes;
+    private javax.swing.JButton botaoSair;
     private javax.swing.JLabel imgFundoPrincipal;
     private javax.swing.JLabel imgSobre;
     private javax.swing.JPanel jPanel1;
