@@ -35,11 +35,12 @@ public class Principal extends javax.swing.JFrame {
         botaoGeraRelatorio = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         imgSobre = new javax.swing.JLabel();
-        botaoSair = new javax.swing.JButton();
+        botaoGeraRelatorio1 = new javax.swing.JButton();
         imgFundoPrincipal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OPEX - Sistema para seu negócio");
+        setResizable(false);
 
         botaoListarClientes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/listarCliente.png"))); // NOI18N
         botaoListarClientes.setText("     Listar Clientes");
@@ -120,14 +121,14 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Sobre", jPanel3);
 
-        botaoSair.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
-        botaoSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/onepieceX.png"))); // NOI18N
-        botaoSair.addActionListener(new java.awt.event.ActionListener() {
+        botaoGeraRelatorio1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        botaoGeraRelatorio1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/onepieceX.png"))); // NOI18N
+        botaoGeraRelatorio1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botaoSairActionPerformed(evt);
+                botaoGeraRelatorio1ActionPerformed(evt);
             }
         });
-        jTabbedPane1.addTab("Sair", botaoSair);
+        jTabbedPane1.addTab("Sair", botaoGeraRelatorio1);
 
         imgFundoPrincipal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/fundoPrincipal.png"))); // NOI18N
 
@@ -147,20 +148,21 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        setSize(new java.awt.Dimension(636, 557));
+        setSize(new java.awt.Dimension(627, 547));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void botaoSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoSairActionPerformed
+    private void botaoGeraRelatorio1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGeraRelatorio1ActionPerformed
         dispose();
-    }//GEN-LAST:event_botaoSairActionPerformed
+    }//GEN-LAST:event_botaoGeraRelatorio1ActionPerformed
 
     private void botaoGeraRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGeraRelatorioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_botaoGeraRelatorioActionPerformed
 
     private void botaoCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarClienteActionPerformed
-        // TODO add your handling code here:
+        CadastrarCliente cadastrarCliente = new CadastrarCliente();
+        //this.desktop.add
     }//GEN-LAST:event_botaoCadastrarClienteActionPerformed
 
     private void botaoListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListarClientesActionPerformed
@@ -205,8 +207,8 @@ public class Principal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastrarCliente;
     private javax.swing.JButton botaoGeraRelatorio;
+    private javax.swing.JButton botaoGeraRelatorio1;
     private javax.swing.JButton botaoListarClientes;
-    private javax.swing.JButton botaoSair;
     private javax.swing.JLabel imgFundoPrincipal;
     private javax.swing.JLabel imgSobre;
     private javax.swing.JPanel jPanel1;
