@@ -216,21 +216,15 @@ public class Login extends javax.swing.JFrame {
                 String linha = lerArq.readLine();
 
                 if (usuario.equals(linha)) {
-                    System.out.println("Usuario certo");
+                    linha = lerArq.readLine();
+                    if (senha.equals(linha)) {
+                        Principal principal = new Principal();
+                        principal.setVisible(true);
+                        dispose();
+                    }
                 } else {
-                    System.out.println("Usuario errado");
                     usuarioSenhaIncorretos.setText("Usuario ou senha incorretos");
                 }
-                //pega a segunda linha do arquivo (usuario)
-                linha = lerArq.readLine();
-
-                if (senha.equals(linha)) {
-                    System.out.println("Senha correto");
-                } else {
-                    System.out.println("Senha errado");
-                    usuarioSenhaIncorretos.setText("Usuario ou senha incorretos");
-                }
-
                 arq.close();
             } catch (IOException e) {
                 System.err.printf("Erro na abertura do arquivo: %s.\n",
