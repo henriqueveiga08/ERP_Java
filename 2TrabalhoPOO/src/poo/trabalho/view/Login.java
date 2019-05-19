@@ -214,7 +214,6 @@ public class Login extends javax.swing.JFrame {
                 BufferedReader lerArq = new BufferedReader(arq);
                 //pega a primeira linha do arquivo (usuario)
                 String linha = lerArq.readLine();
-
                 if (usuario.equals(linha)) {
                     linha = lerArq.readLine();
                     if (senha.equals(linha)) {
