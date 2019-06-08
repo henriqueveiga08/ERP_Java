@@ -5,6 +5,8 @@
  */
 package poo.trabalho.view;
 
+import poo.trabalho.controller.ControleCliente;
+
 /**
  *
  * @author Henrique
@@ -352,7 +354,13 @@ public class CadastrarCliente extends javax.swing.JFrame {
     }//GEN-LAST:event_campoCEPActionPerformed
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        // TODO add your handling code here:
+        
+         ControleCliente controleCliente = new ControleCliente();
+         
+         controleCliente.adicionarCliente(campoNomeCliente.getText());
+         
+         controleCliente.mostrarCliente();
+        
     }//GEN-LAST:event_botaoCadastrarActionPerformed
 
     private void campoEnderecoClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoEnderecoClienteActionPerformed

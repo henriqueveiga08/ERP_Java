@@ -168,8 +168,7 @@ public class Principal extends javax.swing.JFrame {
     private void botaoCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarClienteActionPerformed
         CadastrarCliente cadastrarCliente = new CadastrarCliente();
         cadastrarCliente.setVisible(true);
-        
-        //this.desktop.add
+
     }//GEN-LAST:event_botaoCadastrarClienteActionPerformed
 
     private void botaoListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListarClientesActionPerformed
