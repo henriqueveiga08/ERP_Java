@@ -69,12 +69,14 @@
                               <Component id="imgUsuario32" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Component id="infoProblemas" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="infoClique" alignment="0" min="-2" max="-2" attributes="0"/>
-                              <Component id="campoUsuario" pref="323" max="32767" attributes="0"/>
-                              <Component id="campoSenha" alignment="0" pref="323" max="32767" attributes="0"/>
-                              <Component id="usuarioSenhaIncorretos" max="32767" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="infoProblemas" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="infoClique" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="campoUsuario" pref="323" max="32767" attributes="0"/>
+                                  <Component id="usuarioSenhaIncorretos" max="32767" attributes="0"/>
+                              </Group>
+                              <Component id="campoSenha" alignment="1" min="-2" pref="323" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Component id="introSejaBemVindo" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -109,9 +111,9 @@
                       </Group>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="campoSenha" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="imgSenha32" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Component id="imgSenha32" max="32767" attributes="0"/>
+                      <Component id="campoSenha" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="infoProblemas" min="-2" max="-2" attributes="0"/>
@@ -137,13 +139,6 @@
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoUsuarioActionPerformed"/>
           </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="campoSenha">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Palatino Linotype" size="12" style="0"/>
-            </Property>
-          </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="infoProblemas">
           <Properties>
@@ -216,6 +211,11 @@
               <Color blue="33" green="33" red="ff" type="rgb"/>
             </Property>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JPasswordField" name="campoSenha">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="campoSenhaActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
