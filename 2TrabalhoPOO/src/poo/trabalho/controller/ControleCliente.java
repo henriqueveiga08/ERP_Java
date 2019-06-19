@@ -1,24 +1,58 @@
 package poo.trabalho.controller;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import poo.trabalho.model.Cliente;
 
-public class ControleCliente {
-    
-    ArrayList<Cliente> clientelist = new ArrayList<>();
-   
-    Cliente cliente = new Cliente();
+public final class ControleCliente {
 
-    public void adicionarCliente(String nome) {
-        cliente.setNome(nome);
-        clientelist.add(cliente);
+    static ArrayList<Cliente> clientelist = new ArrayList();
+
+    public ControleCliente() {
     }
-    
-    public void mostrarCliente(){
-        for (Cliente c : clientelist){
-            System.out.println("nome cadastrado: "+c);
+
+    public ControleCliente(String nome, String endereco, String bairro, String cidade,
+            int idCliente, String cep, String celular, String telefone, String email) {
+
+        Cliente cliente = new Cliente(nome, endereco, bairro, cidade, idCliente, cep, celular, telefone, email);
+
+        adicionarCliente(cliente);
+
+    }
+
+    public void adicionarCliente(Cliente c) {
+        clientelist.add(c);
+    }
+
+    public int idCliente() {
+        return clientelist.size();
+    }
+
+    public void mostrarCliente() {
+        clientelist.forEach((c) -> {
+            System.out.println(c);
+        });
+    }
+
+    public ArrayList<Cliente> clientelist() {
+        return clientelist;
+    }
+
+    public int gerarRelatorio() throws IOException {
+        System.out.println("vc Clicou em Gerar relatorio!");
+
+        String caminho = "..\\2TrabalhoPOO\\listaClientes.txt";
+        try (FileWriter escrita = new FileWriter(caminho); BufferedWriter escritor = new BufferedWriter(escrita)) {
+            for (int i = 0; i < clientelist.size(); i++) {
+                escritor.write(clientelist.get(i).toString());
+                escritor.newLine();
+            }
+            escritor.flush();
+            return 1;
         }
+        
     }
-    
-    
+
 }

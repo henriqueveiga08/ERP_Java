@@ -1,15 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poo.trabalho.view;
 
-/**
- *
- * @author Henrique
- */
+import com.sun.xml.internal.ws.client.ContentNegotiation;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import poo.trabalho.controller.ControleCliente;
+import poo.trabalho.model.Cliente;
+
 public class ListarCliente extends javax.swing.JFrame {
+
+    ControleCliente controleCliente = new ControleCliente();
 
     /**
      * Creates new form ListarCliente
@@ -32,48 +31,56 @@ public class ListarCliente extends javax.swing.JFrame {
         tabelaCliente = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         tituloPesquisarCliente = new javax.swing.JLabel();
-        caixaPesquisarCliente = new javax.swing.JTextField();
+        campoPesquisar = new javax.swing.JTextField();
         botaoPesquisar = new javax.swing.JButton();
         imgFundoPesquisarCliente = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        botaoRemover = new javax.swing.JButton();
+        botaoAlterar = new javax.swing.JButton();
+        botaoVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Pesquisar Cliente");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         painelTabela.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tabelaCliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Codigo", "Nome", "Telefone", "E-mail"
+                "ID Cliente", "Nome", "Telefone", "E-mail"
             }
         ));
         jScrollPane1.setViewportView(tabelaCliente);
 
-        painelTabela.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 120));
+        painelTabela.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 620, 150));
 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         tituloPesquisarCliente.setFont(new java.awt.Font("ONE PIECE", 0, 30)); // NOI18N
         tituloPesquisarCliente.setForeground(new java.awt.Color(255, 255, 255));
         tituloPesquisarCliente.setText("Pesquisar Clientes Cadastrados");
-        jPanel2.add(tituloPesquisarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 0, -1, -1));
+        jPanel2.add(tituloPesquisarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
-        caixaPesquisarCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        caixaPesquisarCliente.addActionListener(new java.awt.event.ActionListener() {
+        campoPesquisar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        campoPesquisar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                caixaPesquisarClienteActionPerformed(evt);
+                campoPesquisarActionPerformed(evt);
             }
         });
-        jPanel2.add(caixaPesquisarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 430, 40));
+        campoPesquisar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoPesquisarKeyPressed(evt);
+            }
+        });
+        jPanel2.add(campoPesquisar, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 60, 430, 40));
 
         botaoPesquisar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/iconPesquisarverde.png"))); // NOI18N
         botaoPesquisar.addActionListener(new java.awt.event.ActionListener() {
@@ -86,13 +93,31 @@ public class ListarCliente extends javax.swing.JFrame {
         imgFundoPesquisarCliente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/ImagemPesquisar.png"))); // NOI18N
         jPanel2.add(imgFundoPesquisarCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 130));
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/iconRemover.png"))); // NOI18N
-        jButton2.setText("Remover");
+        botaoRemover.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoRemover.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/iconRemover.png"))); // NOI18N
+        botaoRemover.setText("Remover");
+        botaoRemover.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoRemoverActionPerformed(evt);
+            }
+        });
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/iconAlterar.png"))); // NOI18N
-        jButton3.setText("Alterar");
+        botaoAlterar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        botaoAlterar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/iconAlterar.png"))); // NOI18N
+        botaoAlterar.setText("Alterar");
+        botaoAlterar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoAlterarActionPerformed(evt);
+            }
+        });
+
+        botaoVoltar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/poo/trabalho/img/iconVoltar.png"))); // NOI18N
+        botaoVoltar.setText(" Voltar");
+        botaoVoltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoVoltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -100,9 +125,11 @@ public class ListarCliente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(57, 57, 57)
-                .addComponent(jButton2)
+                .addComponent(botaoRemover)
+                .addGap(18, 18, 18)
+                .addComponent(botaoAlterar)
+                .addGap(18, 18, 18)
+                .addComponent(botaoVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -110,8 +137,9 @@ public class ListarCliente extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(botaoRemover)
+                    .addComponent(botaoAlterar)
+                    .addComponent(botaoVoltar))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -121,7 +149,10 @@ public class ListarCliente extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(painelTabela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -129,22 +160,130 @@ public class ListarCliente extends javax.swing.JFrame {
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(painelTabela, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(38, 38, 38)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(634, 436));
+        setSize(new java.awt.Dimension(634, 455));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void caixaPesquisarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_caixaPesquisarClienteActionPerformed
+    private void campoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoPesquisarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_caixaPesquisarClienteActionPerformed
+    }//GEN-LAST:event_campoPesquisarActionPerformed
 
     private void botaoPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoPesquisarActionPerformed
-        // TODO add your handling code here:
+        int i = 0;
+        System.out.println("Pesquisar por:" + campoPesquisar.getText());
+        DefaultTableModel dtmCliente = (DefaultTableModel) tabelaCliente.getModel();
+        for (Cliente c : controleCliente.clientelist()) {
+            if (campoPesquisar.getText().equals(c.getNome())) {
+                dtmCliente = (DefaultTableModel) tabelaCliente.getModel();
+                dtmCliente.setNumRows(0);
+                Object[] dados = {c.getIdCliente(), c.getNome(), c.getTelefone(), c.getEmail()};
+                dtmCliente.addRow(dados);
+                System.out.println("Clinete encontrado: " + c.getNome());
+                i++;
+            }
+            System.out.println(c.getIdCliente() + c.getNome() + c.getTelefone() + c.getEmail());
+        }
+        if (i == 0) {
+            System.out.println("Cliente nao encontrado");
+            JOptionPane.showMessageDialog(this, " Cliente não encontrado!");
+            campoPesquisar.requestFocus();
+        }
+
+
     }//GEN-LAST:event_botaoPesquisarActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        campoPesquisar.requestFocus();
+
+        DefaultTableModel dtmCliente = (DefaultTableModel) tabelaCliente.getModel();
+
+        controleCliente.mostrarCliente();
+
+        for (Cliente c : controleCliente.clientelist()) {
+            System.out.println(c.getIdCliente() + c.getNome() + c.getTelefone() + c.getEmail());
+            Object[] dados = {c.getIdCliente(), c.getNome(), c.getTelefone(), c.getEmail()};
+            dtmCliente.addRow(dados);
+        }
+
+    }//GEN-LAST:event_formWindowOpened
+
+    private void botaoRemoverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoRemoverActionPerformed
+
+        if (tabelaCliente.getSelectedRow() == -1) {
+            System.out.println("Selecione uma linha para deletar");
+            //JOptionPane.showMessageDialog(this, " Selecione uma linha para deletar! ");
+        } else {
+
+            controleCliente.clientelist().remove(tabelaCliente.getSelectedRow());
+
+            System.out.println("idClienteRemove " + tabelaCliente.getSelectedRow());
+
+            ((DefaultTableModel) tabelaCliente.getModel()).removeRow(tabelaCliente.getSelectedRow());
+
+            controleCliente.clientelist().forEach((c) -> {
+                System.out.println(c);
+            });
+        }
+
+
+    }//GEN-LAST:event_botaoRemoverActionPerformed
+
+    private void botaoAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoAlterarActionPerformed
+        //aqui chama o cadastrar cliente com os dados do cliente selecionado para editar os dados
+
+        if (tabelaCliente.getSelectedRow() == -1) {
+            System.out.println("Selecione uma linha para alterar");
+            //JOptionPane.showMessageDialog(this, " Selecione uma linha para alterar! ");
+        } else {
+
+            CadastrarCliente cadastro = new CadastrarCliente();
+
+            System.out.println("id Cliente Alterar " + tabelaCliente.getSelectedRow());
+
+            cadastro.setVisible(true);//para cod do cliente
+            dispose();
+            System.out.println("lista " + controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getNome());
+
+            cadastro.setCampoNomeCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getNome());
+            cadastro.setCampoEnderecoCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getEndereco());
+            cadastro.setCampoBairroCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getBairro());
+            cadastro.setCampoCidadeCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getCidade());
+            cadastro.setCampoCEP(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getCep());
+            cadastro.setCampoCelular(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getCelular());
+            cadastro.setCampoTelefone(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getTelefone());
+            cadastro.setCampoEmail(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getEmail());
+            cadastro.setIdCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getIdCliente());
+
+            controleCliente.clientelist().remove(tabelaCliente.getSelectedRow());
+
+            System.out.println("idClienteRemove " + tabelaCliente.getSelectedRow());
+
+            ((DefaultTableModel) tabelaCliente.getModel()).removeRow(tabelaCliente.getSelectedRow());
+            DefaultTableModel dtmCliente = (DefaultTableModel) tabelaCliente.getModel();
+            for (Cliente c : controleCliente.clientelist()) {
+                System.out.println(c.getIdCliente() + c.getNome() + c.getTelefone() + c.getEmail());
+                Object[] dados = {c.getIdCliente(), c.getNome(), c.getTelefone(), c.getEmail()};
+                dtmCliente.addRow(dados);
+            }
+        }
+    }//GEN-LAST:event_botaoAlterarActionPerformed
+
+    private void campoPesquisarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoPesquisarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            botaoPesquisar.doClick();
+        }
+    }//GEN-LAST:event_campoPesquisarKeyPressed
+
+    private void botaoVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoVoltarActionPerformed
+        dispose();
+        new Principal().setVisible(true);
+    }//GEN-LAST:event_botaoVoltarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,11 +321,12 @@ public class ListarCliente extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton botaoAlterar;
     private javax.swing.JButton botaoPesquisar;
-    private javax.swing.JTextField caixaPesquisarCliente;
+    private javax.swing.JButton botaoRemover;
+    private javax.swing.JButton botaoVoltar;
+    private javax.swing.JTextField campoPesquisar;
     private javax.swing.JLabel imgFundoPesquisarCliente;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

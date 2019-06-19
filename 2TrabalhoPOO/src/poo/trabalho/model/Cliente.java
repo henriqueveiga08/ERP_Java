@@ -1,32 +1,31 @@
 package poo.trabalho.model;
 
 public class Cliente {
-    
+
     private String nome;
     private String endereco;
     private String bairro;
     private String cidade;
-    private String estado;
-    private int cod;
-    private int cep;
-    private int celular;
-    private int telefone;
-
-    //data cadastro e de aniversario + email(@)
+    private int idCliente;
+    private String cep;
+    private String celular;
+    private String telefone;
+    private String email;
 
     public Cliente() {
     }
 
-    public Cliente(String nome, String endereco, String bairro, String cidade, String estado, int cod, int cep, int celular, int telefone) {
+    public Cliente(String nome, String endereco, String bairro, String cidade,
+            int idCliente, String cep, String celular, String telefone, String email) {
         this.nome = nome;
         this.endereco = endereco;
         this.bairro = bairro;
         this.cidade = cidade;
-        this.estado = estado;
-        this.cod = cod;
+        this.idCliente = idCliente;
         this.cep = cep;
         this.celular = celular;
         this.telefone = telefone;
+        this.email = email;
     }
 
     public String getNome() {
@@ -61,50 +60,43 @@ public class Cliente {
         this.cidade = cidade;
     }
 
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
-
-    public int getCod() {
-        return cod;
-    }
-
-    public void setCod(int cod) {
-        this.cod = cod;
-    }
-
-    public int getCep() {
+    public String getCep() {
         return cep;
     }
 
-    public void setCep(int cep) {
+    public void setCep(String cep) {
         this.cep = cep;
     }
 
-    public int getCelular() {
+    public String getCelular() {
         return celular;
     }
 
-    public void setCelular(int celular) {
+    public void setCelular(String celular) {
         this.celular = celular;
     }
 
-    public int getTelefone() {
+    public String getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(int telefone) {
+    public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
 
     @Override
     public String toString() {
-        return nome;
+        return idCliente+" "+nome+" "+endereco+" "+bairro+" "+cidade+" "+idCliente+" "+cep+" "+celular+" "+
+                telefone + " " + email;
+    }                       
+
+    public int getIdCliente() {
+        return idCliente;
     }
-    
-    
+
+    public String getEmail() {
+        return email;
+    }
+
 }
+

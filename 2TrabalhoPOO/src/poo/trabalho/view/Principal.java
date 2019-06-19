@@ -1,14 +1,11 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package poo.trabalho.view;
 
-/**
- *
- * @author Henrique
- */
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import poo.trabalho.controller.ControleCliente;
+
 public class Principal extends javax.swing.JFrame {
 
     /**
@@ -137,12 +134,10 @@ public class Principal extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(imgFundoPrincipal)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(imgFundoPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -162,17 +157,35 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoGeraRelatorio1ActionPerformed
 
     private void botaoGeraRelatorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoGeraRelatorioActionPerformed
-        // TODO add your handling code here:
+        // Aqui se gera um txt com os dados dos clientes cadastrados
+        
+        ControleCliente controle = new ControleCliente();
+        
+        try {
+            if (controle.gerarRelatorio() == 1){
+                JOptionPane.showMessageDialog(this, " Relatorio Gerado com sucesso! ");
+            }
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Erro ao chamar controle.gerarRelatorio");
+            JOptionPane.showMessageDialog(this, " Erro ao gerar Relatorio ");
+        }
+        
+        
     }//GEN-LAST:event_botaoGeraRelatorioActionPerformed
 
     private void botaoCadastrarClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarClienteActionPerformed
         CadastrarCliente cadastrarCliente = new CadastrarCliente();
         cadastrarCliente.setVisible(true);
-
+        dispose();
     }//GEN-LAST:event_botaoCadastrarClienteActionPerformed
 
     private void botaoListarClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoListarClientesActionPerformed
-        // TODO add your handling code here:
+        new ListarCliente().setVisible(true);
+        dispose();
+        
+        
     }//GEN-LAST:event_botaoListarClientesActionPerformed
 
     /**

@@ -10,7 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class Login extends javax.swing.JFrame {
-
+    
+    
+    
     /**
      * Creates new form Interface
      */
@@ -44,11 +46,26 @@ public class Login extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("OPEX - Sistema para seu negócio");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
+        addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                formKeyPressed(evt);
+            }
+        });
 
         campoUsuario.setFont(new java.awt.Font("Palatino Linotype", 0, 12)); // NOI18N
         campoUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoUsuarioActionPerformed(evt);
+            }
+        });
+        campoUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoUsuarioKeyPressed(evt);
             }
         });
 
@@ -86,12 +103,25 @@ public class Login extends javax.swing.JFrame {
                 botaoEntrarActionPerformed(evt);
             }
         });
+        botaoEntrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                botaoEntrarKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                botaoEntrarKeyTyped(evt);
+            }
+        });
 
         usuarioSenhaIncorretos.setForeground(new java.awt.Color(255, 51, 51));
 
         campoSenha.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 campoSenhaActionPerformed(evt);
+            }
+        });
+        campoSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                campoSenhaKeyPressed(evt);
             }
         });
 
@@ -182,7 +212,6 @@ public class Login extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(822, 399));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
     private void campoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoUsuarioActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoUsuarioActionPerformed
@@ -204,6 +233,7 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_infoCliqueMouseClicked
 
     private void botaoEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoEntrarActionPerformed
+       getRootPane().setDefaultButton(botaoEntrar);
         //mostra mensagem caso o campo usuario e de senha estiver vazio
         if (campoUsuario.getText().trim().equals("")) {
             usuarioSenhaIncorretos.setText("Inserir usuario para continuar");
@@ -239,6 +269,39 @@ public class Login extends javax.swing.JFrame {
     private void campoSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_campoSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_campoSenhaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //getRootPane().setDefaultButton(botaoEntrar);
+    }//GEN-LAST:event_formWindowOpened
+
+    private void campoSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoSenhaKeyPressed
+
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+           botaoEntrar.doClick();
+        }
+    }//GEN-LAST:event_campoSenhaKeyPressed
+
+    private void campoUsuarioKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_campoUsuarioKeyPressed
+
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            campoSenha.requestFocus();
+        }
+
+    }//GEN-LAST:event_campoUsuarioKeyPressed
+
+    private void botaoEntrarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoEntrarKeyPressed
+        if (evt.getKeyCode() == evt.VK_ENTER) {
+            botaoEntrar.requestFocus();
+        }
+    }//GEN-LAST:event_botaoEntrarKeyPressed
+
+    private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formKeyPressed
+
+    private void botaoEntrarKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_botaoEntrarKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botaoEntrarKeyTyped
 
     public static void main(String args[]) {
         // JLabel label usuarioSenhaIncorretos.setText("ola");
