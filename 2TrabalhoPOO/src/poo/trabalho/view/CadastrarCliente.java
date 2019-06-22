@@ -518,7 +518,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             if (idClienteNovo == -1) {
                 Cliente cliente = new Cliente(nome, endereco, bairro, cidade, getC().idCliente(), CEP, celular, telefone,
                         email, sexo, dataCadastro, dataNascimento);
-               
+
                 getC().adicionarCliente(cliente);
 
             } else if (idClienteNovo != -1) {
@@ -526,7 +526,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
                         email, sexo, dataCadastro, dataNascimento);
 
                 getC().adicionarCliente(cliente);
-                
+
                 System.out.println("eslse if idCliente " + idClienteNovo);
                 idClienteNovo = -1;
                 JOptionPane.showMessageDialog(this, " Cliente Alterado com sucesso! ");
@@ -721,6 +721,10 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
     public void setDataCadastroCliente(String dataCadastroCliente) {
         getCampoDataCadastro().setText(dataCadastroCliente);
+    }
+
+    public void setNomeBotaoCadastrar() {
+        botaoCadastrar.setText("Alterar");
     }
 
     public static ControleCliente getC() {

@@ -216,7 +216,7 @@ public class ListarCliente extends javax.swing.JFrame {
 
         if (tabelaCliente.getSelectedRow() == -1) {
             System.out.println("Selecione uma linha para deletar");
-            //JOptionPane.showMessageDialog(this, " Selecione uma linha para deletar! ");
+            JOptionPane.showMessageDialog(this, " Selecione uma linha para deletar! ");
         } else {
 
             controleCliente.clientelist().remove(tabelaCliente.getSelectedRow());
@@ -238,7 +238,7 @@ public class ListarCliente extends javax.swing.JFrame {
 
         if (tabelaCliente.getSelectedRow() == -1) {
             System.out.println("Selecione uma linha para alterar");
-            //JOptionPane.showMessageDialog(this, " Selecione uma linha para alterar! ");
+            JOptionPane.showMessageDialog(this, " Selecione uma linha para alterar! ");
         } else {
 
             CadastrarCliente cadastro = new CadastrarCliente();
@@ -261,7 +261,7 @@ public class ListarCliente extends javax.swing.JFrame {
             cadastro.setSexoCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getSexo());
             cadastro.setDataNascimentoCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getDataNascimento());
             cadastro.setDataCadastroCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getDataCadastro());
-
+            cadastro.setNomeBotaoCadastrar();
             controleCliente.clientelist().remove(tabelaCliente.getSelectedRow());
 
             System.out.println("idClienteRemove " + tabelaCliente.getSelectedRow());
