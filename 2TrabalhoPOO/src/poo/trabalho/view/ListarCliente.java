@@ -1,6 +1,5 @@
 package poo.trabalho.view;
 
-import com.sun.xml.internal.ws.client.ContentNegotiation;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import poo.trabalho.controller.ControleCliente;
@@ -259,6 +258,9 @@ public class ListarCliente extends javax.swing.JFrame {
             cadastro.setCampoTelefone(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getTelefone());
             cadastro.setCampoEmail(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getEmail());
             cadastro.setIdCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getIdCliente());
+            cadastro.setSexoCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getSexo());
+            cadastro.setDataNascimentoCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getDataNascimento());
+            cadastro.setDataCadastroCliente(controleCliente.clientelist().get(tabelaCliente.getSelectedRow()).getDataCadastro());
 
             controleCliente.clientelist().remove(tabelaCliente.getSelectedRow());
 

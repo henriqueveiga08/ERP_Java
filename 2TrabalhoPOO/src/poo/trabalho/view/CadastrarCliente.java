@@ -3,6 +3,7 @@ package poo.trabalho.view;
 import java.awt.Color;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.swing.JOptionPane;
 import poo.trabalho.controller.ControleCliente;
 import poo.trabalho.model.Cliente;
 
@@ -25,6 +26,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        grupoSexo = new javax.swing.ButtonGroup();
         painelCampos = new javax.swing.JPanel();
         tituloCadastrarCliente = new javax.swing.JLabel();
         codCliente = new javax.swing.JLabel();
@@ -51,13 +53,13 @@ public class CadastrarCliente extends javax.swing.JFrame {
         cod = new javax.swing.JLabel();
         campoCelular = new javax.swing.JFormattedTextField();
         campoTelefone = new javax.swing.JFormattedTextField();
-        campoDataNascimento = new javax.swing.JFormattedTextField();
-        campoDataCadastro = new javax.swing.JFormattedTextField();
         campoCEP = new javax.swing.JFormattedTextField();
         emailInvalido = new javax.swing.JLabel();
         painelBotoes = new javax.swing.JPanel();
         botaoCancelar = new javax.swing.JButton();
         botaoCadastrar = new javax.swing.JToggleButton();
+        campoDataNascimento = new javax.swing.JTextField();
+        campoDataCadastro = new javax.swing.JTextField();
         campoVazio = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -113,8 +115,10 @@ public class CadastrarCliente extends javax.swing.JFrame {
             }
         });
 
+        grupoSexo.add(sexoMasculino);
         sexoMasculino.setText("Masculino");
 
+        grupoSexo.add(sexoFeminino);
         sexoFeminino.setText("Feminino");
         sexoFeminino.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,10 +154,6 @@ public class CadastrarCliente extends javax.swing.JFrame {
         } catch (java.text.ParseException ex) {
             ex.printStackTrace();
         }
-
-        campoDataNascimento.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
-
-        campoDataCadastro.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
 
         try {
             campoCEP.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("##### ###")));
@@ -254,28 +254,22 @@ public class CadastrarCliente extends javax.swing.JFrame {
                     .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 386, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(painelCamposLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 57, Short.MAX_VALUE)
                         .addComponent(inserirImagemCliente)
                         .addGap(100, 100, 100))
                     .addGroup(painelCamposLayout.createSequentialGroup()
-                        .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(painelCamposLayout.createSequentialGroup()
-                                .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(painelCamposLayout.createSequentialGroup()
-                                        .addGap(9, 9, 9)
-                                        .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(dataNascimentoCliente)
-                                            .addComponent(dataCadastroCliente)))
-                                    .addGroup(painelCamposLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(30, 30, 30))
+                                .addGap(9, 9, 9)
+                                .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(dataNascimentoCliente)
+                                    .addComponent(dataCadastroCliente)
+                                    .addComponent(campoDataNascimento)
+                                    .addComponent(campoDataCadastro, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)))
                             .addGroup(painelCamposLayout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(campoDataNascimento, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(campoDataCadastro, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addContainerGap(28, Short.MAX_VALUE))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(43, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painelCamposLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(painelCamposLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -395,8 +389,8 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
 
-        String nome = null, endereco = null, bairro = null, cidade = null, dataNascimneto = null,
-                dataCadastro = null, CEP = null, celular = null, telefone = null, email = null;
+        String nome = null, endereco = null, bairro = null, cidade = null, dataNascimento = null,
+                dataCadastro = null, CEP = null, celular = null, telefone = null, email = null, sexo = null;
 
         int contador = 0;
 
@@ -475,11 +469,12 @@ public class CadastrarCliente extends javax.swing.JFrame {
             if (matcher.matches()) {
                 getEmailCliente().setForeground(Color.BLACK);
                 email = getCampoEmail().getText();
-                System.out.println("\nEmail valido\n");
+                //System.out.println("\nEmail valido\n");
+                getEmailInvalido().setText("");
                 contador++;
             } else {
                 getEmailInvalido().setText("Email invalido");
-                System.out.println("\nEmail invalido\n");
+                //System.out.println("\nEmail invalido\n");
                 getCampoEmail().requestFocus();
             }
         }
@@ -489,7 +484,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             getCampoDataNascimento().requestFocus();
         } else {
             getDataNascimentoCliente().setForeground(Color.BLACK);
-            dataNascimneto = getCampoDataNascimento().getText();
+            dataNascimento = getCampoDataNascimento().getText();
             contador++;
         }
         if (getCampoDataCadastro().getText().trim().equals("")) {
@@ -501,23 +496,40 @@ public class CadastrarCliente extends javax.swing.JFrame {
             dataCadastro = getCampoDataCadastro().getText();
             contador++;
         }
-        System.out.println("Contador = " + contador);
-        if (contador == 8) {
+        if (sexoFeminino.isSelected()) {
+            //System.out.println("Sexo Femenino selecionado");
+            getSexoCliente().setForeground(Color.BLACK);
+            sexo = "Feminino";
+            contador++;
+        } else if (sexoMasculino.isSelected()) {
+            //System.out.println("Sexo Masculino selecionado");
+            getSexoCliente().setForeground(Color.BLACK);
+            sexo = "Masculino";
+            contador++;
+        } else {
+            //System.out.println("Sexo Não selecionado");
+            getCampoVazio().setText("*Preencha todos campos para continuar*");
+            getSexoCliente().setForeground(Color.red);
+        }
+
+        //System.out.println("Contador = " + contador);
+        if (contador == 11) {
 
             if (idClienteNovo == -1) {
                 Cliente cliente = new Cliente(nome, endereco, bairro, cidade, getC().idCliente(), CEP, celular, telefone,
-                        email);
+                        email, sexo, dataCadastro, dataNascimento);
+               
                 getC().adicionarCliente(cliente);
-                System.out.println("if nome "+nome+" endereço "+endereco+" bairro "+bairro+" cidade "+cidade+" id "
-                        +getC().idCliente()+" CEP "+CEP+" celular"+celular+" telefone "+telefone+" email "+email);
+
             } else if (idClienteNovo != -1) {
-                Cliente cliente = new Cliente(nome, endereco, bairro, cidade, idClienteNovo, CEP, celular, telefone, email);
-                System.out.println("if nome "+nome+"endereço "+endereco+"bairro "+bairro+"cidade "+cidade+"id "
-                        +idClienteNovo+"CEP "+CEP+"celular"+celular+"telefone "+telefone+" email "+email);
+                Cliente cliente = new Cliente(nome, endereco, bairro, cidade, idClienteNovo, CEP, celular, telefone,
+                        email, sexo, dataCadastro, dataNascimento);
+
                 getC().adicionarCliente(cliente);
+                
                 System.out.println("eslse if idCliente " + idClienteNovo);
                 idClienteNovo = -1;
-                //JOptionPane.showMessageDialog(this, " Cliente Alterado com sucesso! ");
+                JOptionPane.showMessageDialog(this, " Cliente Alterado com sucesso! ");
 
             }
 
@@ -538,7 +550,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
             getDataNascimentoCliente().setForeground(Color.black);
             getDataCadastroCliente().setForeground(Color.black);
 
-            //JOptionPane.showMessageDialog(this, " Cliente cadastrado com sucesso! ");
+            JOptionPane.showMessageDialog(this, " Cliente cadastrado com sucesso! ");
             getCampoNomeCliente().setText("");
             getCampoEnderecoCliente().setText("");
             getCampoBairroCliente().setText("");
@@ -549,7 +561,9 @@ public class CadastrarCliente extends javax.swing.JFrame {
             getCampoEmail().setText("");
             getCampoDataNascimento().setText("");
             getCampoDataCadastro().setText("");
-
+            getSexoFeminino().setSelected(false);
+            getSexoMasculino().setSelected(false);
+            getCampoVazio().setText("");
             getCampoNomeCliente().requestFocus();
 
         }
@@ -631,8 +645,8 @@ public class CadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JFormattedTextField campoCEP;
     private javax.swing.JFormattedTextField campoCelular;
     private javax.swing.JTextField campoCidadeCliente;
-    private javax.swing.JFormattedTextField campoDataCadastro;
-    private javax.swing.JFormattedTextField campoDataNascimento;
+    private javax.swing.JTextField campoDataCadastro;
+    private javax.swing.JTextField campoDataNascimento;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoEnderecoCliente;
     private javax.swing.JTextField campoNomeCliente;
@@ -648,6 +662,7 @@ public class CadastrarCliente extends javax.swing.JFrame {
     private javax.swing.JLabel emailCliente;
     private javax.swing.JLabel emailInvalido;
     private javax.swing.JLabel enderecoCliente;
+    public javax.swing.ButtonGroup grupoSexo;
     private javax.swing.JLabel inserirImagemCliente;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel nomeCliente;
@@ -662,6 +677,10 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
     public void setIdCliente(int idCliente) {
         this.idClienteNovo = idCliente;
+    }
+
+    public void setSexoCliente(String sexo) {
+        System.out.println("sexo = " + sexo);
     }
 
     public void setCampoNomeCliente(String campoNomeCliente) {
@@ -694,6 +713,14 @@ public class CadastrarCliente extends javax.swing.JFrame {
 
     public void setCampoEmail(String campoEmail) {
         getCampoEmail().setText(campoEmail);
+    }
+
+    public void setDataNascimentoCliente(String dataNascimentoCliente) {
+        getCampoDataNascimento().setText(dataNascimentoCliente);
+    }
+
+    public void setDataCadastroCliente(String dataCadastroCliente) {
+        getCampoDataCadastro().setText(dataCadastroCliente);
     }
 
     public static ControleCliente getC() {
@@ -744,16 +771,16 @@ public class CadastrarCliente extends javax.swing.JFrame {
         return campoCidadeCliente;
     }
 
-    public javax.swing.JFormattedTextField getCampoDataCadastro() {
+    public javax.swing.JTextField getCampoDataCadastro() {
         return campoDataCadastro;
+    }
+
+    public javax.swing.JTextField getCampoDataNascimento() {
+        return campoDataNascimento;//campoDataNascimento
     }
 
     public void setCampoDataCadastro(javax.swing.JFormattedTextField campoDataCadastro) {
         this.campoDataCadastro = campoDataCadastro;
-    }
-
-    public javax.swing.JFormattedTextField getCampoDataNascimento() {
-        return campoDataNascimento;
     }
 
     public void setCampoDataNascimento(javax.swing.JFormattedTextField campoDataNascimento) {
@@ -828,16 +855,8 @@ public class CadastrarCliente extends javax.swing.JFrame {
         return dataCadastroCliente;
     }
 
-    public void setDataCadastroCliente(javax.swing.JLabel dataCadastroCliente) {
-        this.dataCadastroCliente = dataCadastroCliente;
-    }
-
     public javax.swing.JLabel getDataNascimentoCliente() {
         return dataNascimentoCliente;
-    }
-
-    public void setDataNascimentoCliente(javax.swing.JLabel dataNascimentoCliente) {
-        this.dataNascimentoCliente = dataNascimentoCliente;
     }
 
     public javax.swing.JLabel getEmailCliente() {
@@ -908,10 +927,6 @@ public class CadastrarCliente extends javax.swing.JFrame {
         return sexoCliente;
     }
 
-    public void setSexoCliente(javax.swing.JLabel sexoCliente) {
-        this.sexoCliente = sexoCliente;
-    }
-
     public javax.swing.JRadioButton getSexoFeminino() {
         return sexoFeminino;
     }
@@ -936,11 +951,4 @@ public class CadastrarCliente extends javax.swing.JFrame {
         this.telefoneCliente = telefoneCliente;
     }
 
-    public javax.swing.JLabel getTituloCadastrarCliente() {
-        return tituloCadastrarCliente;
-    }
-
-    public void setTituloCadastrarCliente(javax.swing.JLabel tituloCadastrarCliente) {
-        this.tituloCadastrarCliente = tituloCadastrarCliente;
-    }
 }

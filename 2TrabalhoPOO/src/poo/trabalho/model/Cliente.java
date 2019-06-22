@@ -11,12 +11,19 @@ public class Cliente {
     private String celular;
     private String telefone;
     private String email;
+    private String sexo;
+    private String dataNascimento;
+    private String dataCadastro;
 
     public Cliente() {
     }
 
     public Cliente(String nome, String endereco, String bairro, String cidade,
-            int idCliente, String cep, String celular, String telefone, String email) {
+            int idCliente, String cep, String celular, String telefone, String email, String sexo, String dataNascimento, String dataCadastro) {
+        
+        System.out.println("cliente" + nome + " " + endereco + " " + bairro + " " + cidade + " " + idCliente + " " + cep + 
+                " " + celular + " " + telefone + " " + email + " " + sexo+" "+dataNascimento+" "+dataCadastro);
+        
         this.nome = nome;
         this.endereco = endereco;
         this.bairro = bairro;
@@ -26,6 +33,9 @@ public class Cliente {
         this.celular = celular;
         this.telefone = telefone;
         this.email = email;
+        this.sexo = sexo;
+        this.dataCadastro = dataCadastro;
+        this.dataNascimento = dataNascimento;
     }
 
     public String getNome() {
@@ -84,12 +94,6 @@ public class Cliente {
         this.telefone = telefone;
     }
 
-    @Override
-    public String toString() {
-        return idCliente+" "+nome+" "+endereco+" "+bairro+" "+cidade+" "+idCliente+" "+cep+" "+celular+" "+
-                telefone + " " + email;
-    }                       
-
     public int getIdCliente() {
         return idCliente;
     }
@@ -98,5 +102,34 @@ public class Cliente {
         return email;
     }
 
-}
+    public String getSexo() {
+        return sexo;
+    }
 
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+
+    @Override
+    public String toString() {
+        return idCliente + " " + nome + " " + endereco + " " + bairro + " " + cidade + " " + cep + " " + celular + " "
+                + telefone + " " + email + " " + sexo+" "+getDataNascimento()+" "+getDataCadastro();
+    }
+
+    public String getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(String dataNascimento) {
+        this.dataNascimento = dataNascimento;
+    }
+
+    public String getDataCadastro() {
+        return dataCadastro;
+    }
+
+    public void setDataCadastro(String dataCadastro) {
+        this.dataCadastro = dataCadastro;
+    }
+
+}

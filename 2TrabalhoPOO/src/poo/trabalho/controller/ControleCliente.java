@@ -13,15 +13,6 @@ public final class ControleCliente {
     public ControleCliente() {
     }
 
-    public ControleCliente(String nome, String endereco, String bairro, String cidade,
-            int idCliente, String cep, String celular, String telefone, String email) {
-
-        Cliente cliente = new Cliente(nome, endereco, bairro, cidade, idCliente, cep, celular, telefone, email);
-
-        adicionarCliente(cliente);
-
-    }
-
     public void adicionarCliente(Cliente c) {
         clientelist.add(c);
     }
